@@ -40,7 +40,7 @@ BFS, bir graf üzerindeki en kısa yolu bulmak için kullanılan bir algoritmad�
 
 A* algoritması, Açıklık Arama (Heuristic Search) algoritmasıdır ve BFS'ye benzer şekilde çalışırken, hedefe daha hızlı ulaşmak için bir kestirim (heuristic) kullanır. A* algoritması, yolun maliyetini ve hedefe olan tahmini mesafeyi göz önünde bulundurarak en kısa ve en hızlı rotayı seçmeye çalışır. Bu projede A*, daha optimum ve zaman açısından verimli rotalar sağlamak için kullanılmaktadır. Özellikle, istasyonlar arasındaki mesafeyi dikkate alarak, daha az maliyetli yolları tercih eder. 
 
-**A* çalışma mantığı:**
+**A * çalışma mantığı:**
 1. Başlangıç istasyonu açık listeye eklenir.
 2. İstasyonlar arasında, hem mevcut mesafe (gerçek mesafe) hem de hedef istasyona olan tahmini mesafe (heuristic) dikkate alınarak en düşük toplam maliyetli (gerçek mesafe + tahmini mesafe) istasyon seçilir.
 3. Bu süreç, hedef istasyona ulaşana kadar devam eder.
