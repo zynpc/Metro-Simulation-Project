@@ -28,6 +28,7 @@ BFS, bir graf üzerindeki en kısa yolu bulmak için kullanılan bir algoritmad�
 
 **BFS çalışma mantığı:**
 1. Başlangıç istasyonu kuyruk yapısına eklenir.
+   - İlk olarak, arama başlangıç istasyonundan başlar. Bu istasyon kuyruk (queue) veri yapısına eklenir.
 2. Kuyruk boşalana kadar şu adımlar tekrarlanır:
    - Kuyruktan bir istasyon alınır.
    - Bu istasyonun komşuları (bağlantılı diğer istasyonlar) ziyaret edilir.
@@ -38,12 +39,35 @@ BFS, bir graf üzerindeki en kısa yolu bulmak için kullanılan bir algoritmad�
 
 ### A* (A Star) Algoritması
 
-A* algoritması, Açıklık Arama (Heuristic Search) algoritmasıdır ve BFS'ye benzer şekilde çalışırken, hedefe daha hızlı ulaşmak için bir kestirim (heuristic) kullanır. A* algoritması, yolun maliyetini ve hedefe olan tahmini mesafeyi göz önünde bulundurarak en kısa ve en hızlı rotayı seçmeye çalışır. Bu projede A*, daha optimum ve zaman açısından verimli rotalar sağlamak için kullanılmaktadır. Özellikle, istasyonlar arasındaki mesafeyi dikkate alarak, daha az maliyetli yolları tercih eder. 
+A* algoritması, Açıklık Arama (Heuristic Search) algoritmasıdır. Bu algoritma, başlangıç noktasından hedefe en kısa ve en hızlı yolu bulmak için kestirim (heuristic) ve gerçek maliyet (g) değerlerini birleştirir.
+
+A* algoritması, her bir noktaya ulaşmanın toplam maliyetini şu formülle hesaplar: f(n)=g(n)+h(n)
+
+f(n) : Düğüme ulaşmanın toplam maliyeti
+
+𝑔(n) : Başlangıçtan düğüme kadar olan gerçek maliyet
+
+h(n) : Düğümden hedefe olan tahmini maliyet (heuristic)
+                          
+Bu projede A* algoritması, istasyonlar arasındaki mesafeleri ve tahmini süreleri dikkate alarak uygulanmıştır. Algoritma, daha hızlı ve optimize edilmiş rotalar sunarak yolcuların ulaşım süresini minimize etmeyi hedefler. Özellikle, istasyonlar arasındaki doğrudan mesafeyi veya ulaşım süresini kestirim fonksiyonu olarak kullanarak daha az maliyetli ve zaman açısından verimli yolları tercih eder.
 
 **A * çalışma mantığı:**
-1. Başlangıç istasyonu açık listeye eklenir.
-2. İstasyonlar arasında, hem mevcut mesafe (gerçek mesafe) hem de hedef istasyona olan tahmini mesafe (heuristic) dikkate alınarak en düşük toplam maliyetli (gerçek mesafe + tahmini mesafe) istasyon seçilir.
-3. Bu süreç, hedef istasyona ulaşana kadar devam eder.
+1. Başlangıç İstasyonunun Ekleme İşlemi:
+  - Başlangıç istasyonu, toplam maliyet değeri f(n)=g(n)+h(n) ile birlikte heapq (min-heap) yapısına eklenir.
+  - Heapq, her zaman en düşük maliyetli düğümü çıkarmayı sağlar.
+   
+2. En Düşük Maliyetli İstasyonun Seçilmesi:
+  - Heapq içindeki istasyonlardan f(n) değeri en düşük olan istasyon çıkartılır.
+
+3. Komşu İstasyonların İncelenmesi:
+  - Seçilen istasyonun tüm komşu istasyonları değerlendirilir.
+  - Komşu istasyonun yeni maliyeti şu şekilde hesaplanır:
+    g(yeni)=g(mevcut)+mesafe(mevcut,komşu)
+    f(yeni)=g(yeni)+h(komşu)
+    Eğer bu komşu istasyon daha düşük bir maliyetle ulaşılabiliyorsa veya daha önce keşfedilmediyse, bu maliyet güncellenir ve komşu istasyon tekrar heapq’ye eklenir.
+
+4. Hedefe Ulaşma Kontrolü: Eğer hedef istasyon seçilen istasyon ile eşleşirse, algoritma sonlanır ve en kısa rota elde edilir.
+
 
 ### Neden Bu Algoritmalar Kullanıldı?
 
@@ -60,8 +84,9 @@ A* algoritması, Açıklık Arama (Heuristic Search) algoritmasıdır ve BFS'ye 
 
 ### Projeyi Geliştirme Fikirleri
 
-- Kullanıcıların metro ağı üzerinde rahatça gezinmesini sağlamak için görsel bir arayüz geliştirmek.
-- Her istasyonun kapasitesine göre kapasite aşımını analiz etmek.
+- Daha kullanıcı dostu bir arayüz ile istasyon seçimi ve rota görüntüleme sağlanabilir.
+- Metro, otobüs ve tramvay gibi farklı ulaşım araçlarını içeren karma ulaşım ağları için genişletilebilir.
+- Gerçek zamanlı verilerle seyahat süresi tahminleri iyileştirilebilir.
 - Metro hattında bakım çalışmaları, arızalar veya acil durumlar olduğunda, anında kullanıcıları bilgilendiren bir sistem oluşturma.
 
 
