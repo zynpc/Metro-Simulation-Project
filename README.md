@@ -82,12 +82,5 @@ Bu projede A* algoritması, istasyonlar arasındaki mesafeleri ve tahmini sürel
 ![Ekran Görüntüsü (1452)](https://github.com/user-attachments/assets/9dbbfd8f-ede9-4f68-8f90-b0a454f2d890)
 
 
-### Projeyi Geliştirme Fikirleri
-
-- Daha kullanıcı dostu bir arayüz ile istasyon seçimi ve rota görüntüleme sağlanabilir.
-- Metro, otobüs ve tramvay gibi farklı ulaşım araçlarını içeren karma ulaşım ağları için genişletilebilir.
-- Gerçek zamanlı verilerle seyahat süresi tahminleri iyileştirilebilir.
-- Metro hattında bakım çalışmaları, arızalar veya acil durumlar olduğunda, anında kullanıcıları bilgilendiren bir sistem oluşturma.
-
 
 
