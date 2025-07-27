@@ -79,7 +79,8 @@ Bu projede A* algoritması, istasyonlar arasındaki mesafeleri ve tahmini sürel
 ### Örnek Kullanım ve Test Sonuçları
 ![image](https://github.com/user-attachments/assets/e6e73976-5e7c-4f75-9746-1e57a22f740b)
 
-![](Output.png)
+![](Yenilenen%20Proje/Output.png)
+
 
 
 
